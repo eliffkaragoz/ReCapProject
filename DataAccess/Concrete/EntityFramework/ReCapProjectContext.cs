@@ -19,7 +19,15 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Color> Colors { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Color>().ToTable("Colors");
 
+             modelBuilder.Entity<Color>().Property(p => p.ColorID).HasColumnName("colorId");
+            modelBuilder.Entity<Color>().Property(p => p.ColorName).HasColumnName("ColorsName");
+        }
     }
+    
+    
 }
  
