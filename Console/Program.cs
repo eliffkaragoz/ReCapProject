@@ -10,58 +10,42 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
-            {
-                System.Console.WriteLine(car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice );
-            }
-           
-            //CarTest();
-            //BrandTest();
             //ColorTest();
+            //BrandTest();
+            CarTest();
+
         }
 
-        private static void ColorTest()
+        private static void CarTest()
         {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            colorManager.Add(new Color { ColorName = "White" });
+            CarManager carManager = new CarManager(new EfCarDal());
+            carManager.Add(new Car { CarID = 1,BrandID=1,ColorID=1,  CarName = "Mercedes ML", DailyPrice = 675, Description = "Automatic", ModelYear = "2015" });
         }
-
-
 
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            brandManager.Add(new Brand { BrandName = "Hyundai" });
-            //brandManager.Delete(new Brand { BrandName = "Hyundai" });
-
+            brandManager.Add(new Brand { BrandID = 1, BrandName = "Mercedes" });
             foreach (var brand in brandManager.GetAll())
             {
                 System.Console.WriteLine(brand.BrandName);
             }
         }
 
-        private static void CarTest()
+        private static void ColorTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            //carManager.Add(new Car { CarName = "Hyundai i20",
-            //    BrandID = 3, ColorID = 5, DailyPrice = 417, Description = "automatic", ModelYear = "2010" });
-            //carManager.Delete(new Car
-            //{
-            //    CarID = 3003,
-            //    CarName = "Mercedes",
-            //    BrandID = 1,
-            //    ColorID = 1,
-            //    DailyPrice = 417,
-            //    Description = "automatic",
-            //    ModelYear = "2010"
-            //});
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            colorManager.Add(new Color { ColorID = 2, ColorName = "White" });
 
-
-            foreach (var car in carManager.GetAll())
+            foreach (var color in colorManager.GetAll())
             {
-                System.Console.WriteLine(car.Description);
+                System.Console.WriteLine(color.ColorName);
             }
+
         }
+
+
+
+
     }
 }

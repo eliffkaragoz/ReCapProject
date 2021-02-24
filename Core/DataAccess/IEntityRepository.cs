@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Core.Abstract
+namespace Core.DataAccess
 {
     //İnterface'ler new'lenemez.
     //Tip olarak sadece Entities'in Concrete klasöründeki referansları almaların sağladık- Kısıtlama getirdik.
