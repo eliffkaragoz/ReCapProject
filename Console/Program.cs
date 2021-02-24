@@ -4,28 +4,45 @@ using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
-namespace Console
+namespace Test
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             //ColorTest();
             //BrandTest();
-            CarTest();
+            CarManager carManager = new CarManager(new EfCarDal());
+
+
+            foreach (var car in carManager.GetCarDetails())
+            {
+
+                Console.WriteLine(car.Description + "    /  " + car.BrandName + "    /  " + car.ColorName + "    /  " + car.DailyPrice);
+           
+            }
 
         }
 
         private static void CarTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(new Car { CarID = 1,BrandID=1,ColorID=1,  CarName = "Mercedes ML", DailyPrice = 675, Description = "Automatic", ModelYear = "2015" });
+
+            carManager.Update(new Car { CarID = 1, BrandID = 1, ColorID = 6, DailyPrice = 675, Description = "BMW", ModelYear = "2015" });
+
+            foreach (var car in carManager.GetAll())
+            {
+
+                Console.WriteLine(car.Description);
+
+            }
         }
 
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            brandManager.Add(new Brand { BrandID = 1, BrandName = "Mercedes" });
+            brandManager.Delete(new Brand {BrandID = 3,BrandName = "Mercedes" });
             foreach (var brand in brandManager.GetAll())
             {
                 System.Console.WriteLine(brand.BrandName);
@@ -35,7 +52,13 @@ namespace Console
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            colorManager.Add(new Color { ColorID = 2, ColorName = "White" });
+            colorManager.Add(new Color { ColorName = "pink" });
+            colorManager.Add(new Color { ColorName = "black" });
+            colorManager.Add(new Color { ColorName = "blue" });
+            colorManager.Add(new Color { ColorName = "gray" });
+            colorManager.Add(new Color { ColorName = "yellow" });
+
+
 
             foreach (var color in colorManager.GetAll())
             {
