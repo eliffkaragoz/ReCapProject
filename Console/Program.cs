@@ -4,7 +4,7 @@ using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
-namespace Test
+namespace ConsoleUI
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace Test
             CarManager carManager = new CarManager(new EfCarDal());
 
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
 
                 Console.WriteLine(car.Description + "    /  " + car.BrandName + "    /  " + car.ColorName + "    /  " + car.DailyPrice);
@@ -31,7 +31,7 @@ namespace Test
 
             carManager.Update(new Car { CarID = 1, BrandID = 1, ColorID = 6, DailyPrice = 675, Description = "BMW", ModelYear = "2015" });
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
 
                 Console.WriteLine(car.Description);
@@ -43,7 +43,7 @@ namespace Test
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             brandManager.Delete(new Brand {BrandID = 3,BrandName = "Mercedes" });
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 System.Console.WriteLine(brand.BrandName);
             }
@@ -60,7 +60,7 @@ namespace Test
 
 
 
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 System.Console.WriteLine(color.ColorName);
             }
