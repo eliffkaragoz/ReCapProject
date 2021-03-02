@@ -16,7 +16,7 @@ namespace ConsoleUI
             //CarTest();
            //CustomerTest();  //!!
             //UserTest();      
-            RentTest();
+            //RentTest();
         }
 
         private static void RentTest()
